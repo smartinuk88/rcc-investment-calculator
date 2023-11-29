@@ -1,6 +1,6 @@
 import headerImg from "../assets/investment-calculator-logo.png";
 
-export const Header = () => {
+const Header = () => {
   return (
     <header id="header">
       <img src={headerImg} alt="Calculator logo" />
@@ -8,3 +8,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;
