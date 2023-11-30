@@ -1,4 +1,11 @@
-function Result() {
+import { formatter } from "../util/investment";
+
+function Result({ resultsData }) {
+  const formattedResults = resultsData.forEach((result) =>
+    Object.values(result)
+  );
+  console.log(formattedResults);
+
   return (
     <table id="result">
       <thead>
@@ -11,13 +18,15 @@ function Result() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>1000</td>
-          <td>5</td>
-          <td>5</td>
-          <td>300</td>
-        </tr>
+        {resultsData.map((row) => (
+          <tr key={row.year}>
+            <td>{row.year}</td>
+            <td>{row.annualInvestment + row.interest}</td>
+            <td>{row.interest}</td>
+            <td>{row.valueEndOfYear}</td>
+            <td>{row.annualInvestment}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );

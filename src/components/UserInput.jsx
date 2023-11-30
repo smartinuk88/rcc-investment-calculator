@@ -1,55 +1,50 @@
 function UserInput({ onChangeInput, inputData }) {
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    onChangeInput(name, value);
-  };
-
   return (
     <form id="user-input">
       <div className="input-group">
-        <div>
+        <p>
           <label htmlFor="initial-investment">Initial Investment</label>
           <input
-            onChange={handleInputChange}
+            onChange={(e) => onChangeInput("initalInvestment", e.target.value)}
             value={inputData.initialInvestment}
             type="number"
             id="initial-investment"
-            name="initialInvestment"
+            required
           />
-        </div>
-        <div>
+        </p>
+        <p>
           <label htmlFor="annual-investment">Annual Investment</label>
           <input
-            onChange={handleInputChange}
+            onChange={(e) => onChangeInput("annualInvestment", e.target.value)}
             value={inputData.annualInvestment}
             type="number"
             id="annual-investment"
-            name="annualInvestment"
+            required
           />
-        </div>
+        </p>
       </div>
 
       <div className="input-group">
-        <div>
+        <p>
           <label htmlFor="expected-return">Expected Return</label>
           <input
-            onChange={handleInputChange}
+            onChange={(e) => onChangeInput("expectedReturn", e.target.value)}
             value={inputData.expectedReturn}
             type="number"
             id="expected-return"
-            name="expectedReturn"
+            required
           />
-        </div>
-        <div>
+        </p>
+        <p>
           <label htmlFor="duration">duration</label>
           <input
-            onChange={handleInputChange}
+            onChange={(e) => onChangeInput("duration", e.target.value)}
             value={inputData.duration}
             type="number"
             id="duration"
-            name="duration"
+            required
           />
-        </div>
+        </p>
       </div>
     </form>
   );
