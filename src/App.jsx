@@ -1,8 +1,7 @@
 import { useState } from "react";
 import Header from "./components/Header";
-import Result from "./components/Result";
+import Results from "./components/Results";
 import UserInput from "./components/UserInput";
-import { calculateInvestmentResults } from "./util/investment";
 
 const USER_DATA = {
   initialInvestment: 1000,
@@ -14,22 +13,23 @@ const USER_DATA = {
 function App() {
   const [userData, setUserData] = useState({ ...USER_DATA });
 
+  const inputIsValid = userData.duration >= 1;
+
   const handleChangeInput = (key, newValue) => {
     setUserData((prevData) => {
-      return { ...prevData, [key]: newValue };
+      return { ...prevData, [key]: +newValue };
     });
   };
 
-  const annualData = calculateInvestmentResults(userData);
-
   return (
-    <div>
+    <>
       <Header />
       <main>
         <UserInput onChangeInput={handleChangeInput} inputData={userData} />
-        <Result resultsData={annualData} />
+        {!inputIsValid && <p className="center">No duration entered</p>}
+        {inputIsValid && <Results userData={userData} />}
       </main>
-    </div>
+    </>
   );
 }
 
